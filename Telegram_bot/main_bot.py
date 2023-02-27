@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 logging.basicConfig(level=logging.INFO)
 
 load_dotenv()
-# environ['TOKEN'] = '6181010344:AAFcMGDXWDPkqBvm_ymNMoheQZVKAN7E1fA'
+
 
 bot = Bot(token=getenv('TOKEN'))
 dp = Dispatcher(bot, storage=MemoryStorage())
