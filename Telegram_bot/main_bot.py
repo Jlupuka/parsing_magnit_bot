@@ -1,23 +1,20 @@
 import logging
-
-from os import getenv, environ
+from os import getenv
 
 from aiofiles import os
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
 from aiogram.utils.markdown import hbold, hlink
+from dotenv import load_dotenv
 
 from hendlers import murk_up
 from scrape_magnit.main import collect_data
 from states.state_city import Register
 
-from dotenv import load_dotenv
-
 logging.basicConfig(level=logging.INFO)
 
 load_dotenv()
-
 
 bot = Bot(token=getenv('TOKEN'))
 dp = Dispatcher(bot, storage=MemoryStorage())
@@ -41,7 +38,6 @@ city_code_dict = {
 async def on_startup(dispatcher):
     from bot_commands.commands import set_default_commands
     await set_default_commands(dispatcher)
-
     print("Бот запущен!")
 
 
