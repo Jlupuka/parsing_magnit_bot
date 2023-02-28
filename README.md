@@ -1,4 +1,4 @@
-# parsing_magnit_bot
+# *Parsing_magnit_bot* ![Без имени-2](https://user-images.githubusercontent.com/88852824/221879629-063a2b85-b5ce-4c61-bc25-9dcf07515ed5.png)
 
 [link to the website](https://magnit.ru/promo/)
 
