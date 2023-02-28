@@ -5,7 +5,7 @@ from aiofiles import os
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
-from aiogram.utils.markdown import hbold, hlink
+from aiogram.utils.markdown import hbold, hlink, hitalic, hcode
 from dotenv import load_dotenv
 
 from hendlers import murk_up
@@ -54,8 +54,9 @@ async def info(message: types.Message):
 
 @dp.callback_query_handler(text="scrape_magnit")
 async def scrape_magnit(callback: types.CallbackQuery):
-    text = 'Please write the name of the city in Russian, for example: Москва'
-    await bot.send_message(chat_id=callback.from_user.id, text=text)
+    text = f'Please write the name of the city in Russian, for example:\n' \
+           f'{hcode("Москва")}'
+    await bot.send_message(chat_id=callback.from_user.id, text=text, parse_mode='HTML')
     await Register.city.set()
 
 
@@ -63,7 +64,8 @@ async def scrape_magnit(callback: types.CallbackQuery):
 async def send_data(message: types.Message, state: FSMContext):
     city_code = city_code_dict.get(message.text)
     if city_code:
-        text = f"{hbold('Please waiting 30-300 sec.')}"
+        text = f"{hbold('Please waiting 30-300 sec.')}\n" \
+               f"{hitalic('If you have not received the file after such a time, try again')}"
         await bot.send_message(chat_id=message.from_user.id,
                                text=text, parse_mode='HTML')
         await state.finish()

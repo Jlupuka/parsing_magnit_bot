@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 
 
-async def collect_data(city_code: str = '2406') -> str:
+async def collect_data(city_code: str = '2398') -> str:
     cut_time = dt.datetime.now().strftime('%d_%m_%Y_%H_%M')  # to save a file
 
     cookies = {'mg_geo_id': city_code}  # individual city code
